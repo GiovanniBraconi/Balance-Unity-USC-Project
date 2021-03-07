@@ -10,14 +10,15 @@ public class RepeatWood : MonoBehaviour
     void Start()
     {
         startPos = transform.position;
-        repeatWidth = GetComponent<BoxCollider>().size.y / 2;
+       
+        
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.y > startPos.y + repeatWidth)
+        if (transform.position.y > 34.03f)
         {
             transform.position = startPos;
         }

@@ -199,6 +199,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &481275355 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2036492507285293613, guid: 2a125a4ea13fbc14ba82f39086d46789,
+    type: 3}
+  m_PrefabInstance: {fileID: 1698451804}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &533803926
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,6 +245,7 @@ MonoBehaviour:
   youWonText: {fileID: 1928757633}
   titleScreen: {fileID: 614927572}
   restartButton: {fileID: 626377541}
+  resumeButton: {fileID: 481275355}
   targetPrefabs:
   - {fileID: 585820522000132548, guid: cd091def8f8842647be870654fa8aea4, type: 3}
   isGameActive: 0
@@ -5276,71 +5289,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1320194268826379337, guid: 2a125a4ea13fbc14ba82f39086d46789,
+    - target: {fileID: 1967428664, guid: 2a125a4ea13fbc14ba82f39086d46789, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 533803927}
+    - target: {fileID: 2036492507285293613, guid: 2a125a4ea13fbc14ba82f39086d46789,
         type: 3}
-      propertyPath: difficulty
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2412038818165200241, guid: 2a125a4ea13fbc14ba82f39086d46789,
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 533803927}
+    - target: {fileID: 2036492507285293613, guid: 2a125a4ea13fbc14ba82f39086d46789,
         type: 3}
-      propertyPath: m_fontSize
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 2412038818165200241, guid: 2a125a4ea13fbc14ba82f39086d46789,
-        type: 3}
-      propertyPath: m_fontSizeBase
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 2412038818165200246, guid: 2a125a4ea13fbc14ba82f39086d46789,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 270.11823
-      objectReference: {fileID: 0}
-    - target: {fileID: 2412038818165200246, guid: 2a125a4ea13fbc14ba82f39086d46789,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 42.08197
-      objectReference: {fileID: 0}
-    - target: {fileID: 2412038818165200246, guid: 2a125a4ea13fbc14ba82f39086d46789,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 135.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2412038818165200246, guid: 2a125a4ea13fbc14ba82f39086d46789,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -36.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2412038818556722424, guid: 2a125a4ea13fbc14ba82f39086d46789,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2412038819036591583, guid: 2a125a4ea13fbc14ba82f39086d46789,
-        type: 3}
-      propertyPath: m_text
-      value: Balance
-      objectReference: {fileID: 0}
-    - target: {fileID: 2412038819036591583, guid: 2a125a4ea13fbc14ba82f39086d46789,
-        type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResumeGame
       objectReference: {fileID: 0}
     - target: {fileID: 2412038819336988630, guid: 2a125a4ea13fbc14ba82f39086d46789,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 533803927}
-    - target: {fileID: 2412038819336988630, guid: 2a125a4ea13fbc14ba82f39086d46789,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2412038819336988630, guid: 2a125a4ea13fbc14ba82f39086d46789,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RestartGame
-      objectReference: {fileID: 0}
     - target: {fileID: 2412038819697437795, guid: 2a125a4ea13fbc14ba82f39086d46789,
         type: 3}
       propertyPath: m_Pivot.x
@@ -5451,20 +5418,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 3916007963731579421, guid: 2a125a4ea13fbc14ba82f39086d46789,
-        type: 3}
-      propertyPath: difficulty
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4552567045002778971, guid: 2a125a4ea13fbc14ba82f39086d46789,
-        type: 3}
-      propertyPath: difficulty
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8796187538685920575, guid: 2a125a4ea13fbc14ba82f39086d46789,
+    - target: {fileID: 5095374910948488525, guid: 2a125a4ea13fbc14ba82f39086d46789,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854935769577292985, guid: 2a125a4ea13fbc14ba82f39086d46789,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -196
+      objectReference: {fileID: 0}
+    - target: {fileID: 8209271894912547877, guid: 2a125a4ea13fbc14ba82f39086d46789,
+        type: 3}
+      propertyPath: m_Text
+      value: Resume
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a125a4ea13fbc14ba82f39086d46789, type: 3}
@@ -5475,6 +5442,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 277832500077720709, guid: c3d8a6893f5be6e4db3934207601bde6,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ffb544faf6f99aa4a9b59f3b16bf4b04,
+        type: 3}
     - target: {fileID: 277832500077720709, guid: c3d8a6893f5be6e4db3934207601bde6,
         type: 3}
       propertyPath: m_SortingOrder

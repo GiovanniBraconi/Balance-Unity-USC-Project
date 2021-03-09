@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]private TextMeshProUGUI youWonText;
     public GameObject titleScreen;
     public Button restartButton;
+    public Button resumeButton;
     
     
 
@@ -102,6 +103,10 @@ public class GameManager : MonoBehaviour
 
     public void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseGame();
+        }
         CountDownTimer();
     }
     public void CountDownTimer()
@@ -115,6 +120,30 @@ public class GameManager : MonoBehaviour
                 GameOver();
             }
         }
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
+    void PauseGame()
+    {
+        if (isGameActive)
+        { 
+          Time.timeScale = 0;
+            resumeButton.gameObject.SetActive(true);
+            
+        }
+    }
+
+    public void ResumeGame()
+    {
+        if (isGameActive)
+        {
+          Time.timeScale = 1;
+            resumeButton.gameObject.SetActive(false);
+        }
+       
     }
 
 }

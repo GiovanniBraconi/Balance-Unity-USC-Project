@@ -12,7 +12,7 @@ public class MoveUp : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         gameObject.transform.Translate(Vector3.up * Time.deltaTime * speed);
     }

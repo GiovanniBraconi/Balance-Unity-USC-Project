@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]private TextMeshProUGUI youWonText;
     public GameObject titleScreen;
     public Button restartButton;
-    public Button resumeButton;
+    public GameObject pauseMenu;
     
     
 
@@ -131,7 +131,7 @@ public class GameManager : MonoBehaviour
         if (isGameActive)
         { 
           Time.timeScale = 0;
-            resumeButton.gameObject.SetActive(true);
+            pauseMenu.gameObject.SetActive(true);
             
         }
     }
@@ -141,7 +141,7 @@ public class GameManager : MonoBehaviour
         if (isGameActive)
         {
           Time.timeScale = 1;
-            resumeButton.gameObject.SetActive(false);
+            pauseMenu.gameObject.SetActive(false);
         }
        
     }

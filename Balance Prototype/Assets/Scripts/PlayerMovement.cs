@@ -27,25 +27,27 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (gameManager.isGameActive)
         {
-            if (hasPowerup)
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                hasPowerup = false;
-                GameObject[] GOs = GameObject.FindGameObjectsWithTag("Flames");
-                // now all your game objects are in GOs,
-                // all that remains is to getComponent of each and every script and you are good to go.
-                // to disable a components
-                for (var i = 0; i < GOs.Length; i++)
+                if (hasPowerup)
                 {
-                    // to access component - GOs[i].GetComponent.<BoxCollider>()
-                    // but I do it everything in 1 line.
-                    GOs[i].gameObject.SetActive(false);
+                    hasPowerup = false;
+                    GameObject[] GOs = GameObject.FindGameObjectsWithTag("Flames");
+                    // now all your game objects are in GOs,
+                    // all that remains is to getComponent of each and every script and you are good to go.
+                    // to disable a components
+                    for (var i = 0; i < GOs.Length; i++)
+                    {
+                        // to access component - GOs[i].GetComponent.<BoxCollider>()
+                        // but I do it everything in 1 line.
+                        GOs[i].gameObject.SetActive(false);
+                    }
                 }
-            }
 
             }
-        
+
             // Check for left and right bounds
             if (transform.position.x < xRangeNeg)
             {
@@ -63,4 +65,6 @@ public class PlayerMovement : MonoBehaviour
 
         }
     }
+    }
+
 

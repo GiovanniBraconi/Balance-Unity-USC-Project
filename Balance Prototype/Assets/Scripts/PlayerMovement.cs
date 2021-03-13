@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private GameManager gameManager;
     private bool hasPowerup;
     private GameObject[] GOs;
+    public ParticleSystem waterSplash;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (hasPowerup)
                 {
+                    waterSplash.Play();
                     hasPowerup = false;
                     GameObject[] GOs = GameObject.FindGameObjectsWithTag("Flames");
                     // now all your game objects are in GOs,

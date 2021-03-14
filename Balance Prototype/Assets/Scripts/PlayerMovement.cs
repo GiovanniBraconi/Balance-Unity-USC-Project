@@ -12,6 +12,9 @@ public class PlayerMovement : MonoBehaviour
     private bool hasPowerup;
     private GameObject[] GOs;
     public ParticleSystem waterSplash;
+    private SpriteRenderer[] flames;
+   
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -34,18 +37,29 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (hasPowerup)
                 {
-                    waterSplash.Play();
-                    hasPowerup = false;
                     GameObject[] GOs = GameObject.FindGameObjectsWithTag("Flames");
-                    // now all your game objects are in GOs,
-                    // all that remains is to getComponent of each and every script and you are good to go.
-                    // to disable a components
                     for (var i = 0; i < GOs.Length; i++)
                     {
                         // to access component - GOs[i].GetComponent.<BoxCollider>()
                         // but I do it everything in 1 line.
-                        GOs[i].gameObject.SetActive(false);
+                        GOs[i].gameObject.GetComponentInChildren<ParticleSystem>().Play();
+                        GOs[i].gameObject.GetComponent<BoxCollider>().enabled = false;
+                        flames = GOs[i].gameObject.GetComponentsInChildren<SpriteRenderer>();
+                        foreach (var sr in flames)
+                        {
+                            sr.enabled = false;
+                        }
+
                     }
+
+                    waterSplash.Play();
+                    
+                    hasPowerup = false;
+                    
+                    // now all your game objects are in GOs,
+                    // all that remains is to getComponent of each and every script and you are good to go.
+                    // to disable a components
+                    
                 }
 
             }

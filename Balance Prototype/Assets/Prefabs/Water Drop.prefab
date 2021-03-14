@@ -109,6 +109,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waterSplash: {fileID: 5380700582356953293}
+  smokeEffect: {fileID: 5695671920093858165, guid: f42a10d8cbae9ee4fa467586d87ccbe8,
+    type: 3}
+  smokeChild: {fileID: 0}
 --- !u!54 &412854876306356266
 Rigidbody:
   m_ObjectHideFlags: 0

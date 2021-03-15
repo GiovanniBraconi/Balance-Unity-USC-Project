@@ -12,7 +12,9 @@ public class PlayerMovement : MonoBehaviour
     private bool hasPowerup;
     private GameObject[] GOs;
     public ParticleSystem waterSplash;
+    public ParticleSystem steamEffect;
     private SpriteRenderer[] flames;
+    private SpriteRenderer waterDrop;
    
     
     // Start is called before the first frame update
@@ -26,7 +28,10 @@ public class PlayerMovement : MonoBehaviour
     {
 
         gameManager.GameOver();
-        Destroy(gameObject);
+        
+        steamEffect.Play();
+        Debug.Log("sjdfosd");
+       
     }
     // Update is called once per frame
     void Update()

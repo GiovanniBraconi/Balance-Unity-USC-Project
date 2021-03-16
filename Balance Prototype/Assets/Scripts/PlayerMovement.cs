@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public ParticleSystem steamEffect;
     private SpriteRenderer[] flames;
     private SpriteRenderer waterDrop;
+
    
     
     // Start is called before the first frame update
@@ -22,15 +23,18 @@ public class PlayerMovement : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         hasPowerup = true;
+       
     }
 
     private void OnTriggerEnter(Collider other)
     {
 
         gameManager.GameOver();
-        
+        gameObject.GetComponent<SphereCollider>().enabled = false;
+        gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
         steamEffect.Play();
-        Debug.Log("sjdfosd");
+        gameObject.GetComponent<AudioSource>().Play();
+        
        
     }
     // Update is called once per frame

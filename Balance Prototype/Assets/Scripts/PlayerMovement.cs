@@ -13,9 +13,11 @@ public class PlayerMovement : MonoBehaviour
     private GameObject[] GOs;
     public ParticleSystem waterSplash;
     public ParticleSystem steamEffect;
+    public AudioClip steamSound;
+    public AudioClip waterSplashSound;
     private SpriteRenderer[] flames;
     private SpriteRenderer waterDrop;
-
+    private AudioSource waterdropAudio;
    
     
     // Start is called before the first frame update
@@ -23,7 +25,8 @@ public class PlayerMovement : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         hasPowerup = true;
-       
+        waterdropAudio = gameObject.GetComponent<AudioSource>();
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -33,7 +36,9 @@ public class PlayerMovement : MonoBehaviour
         gameObject.GetComponent<SphereCollider>().enabled = false;
         gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
         steamEffect.Play();
-        gameObject.GetComponent<AudioSource>().Play();
+        waterdropAudio.PlayOneShot(steamSound);
+
+        
         
        
     }
@@ -60,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
                         }
 
                     }
-
+                    waterdropAudio.PlayOneShot(waterSplashSound);
                     waterSplash.Play();
                     
                     hasPowerup = false;

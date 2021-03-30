@@ -1512,6 +1512,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1711950907}
   - component: {fileID: 1711950908}
+  - component: {fileID: 1711950909}
   m_Layer: 0
   m_Name: Intro music
   m_TagString: Untagged
@@ -1629,6 +1630,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1711950909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1711950906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e011c04df65a9140ab0d1680a8b44ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1898658335 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5638361808872850683, guid: 2a125a4ea13fbc14ba82f39086d46789,

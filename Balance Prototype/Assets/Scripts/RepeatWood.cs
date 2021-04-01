@@ -18,7 +18,7 @@ public class RepeatWood : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.y > 34.03f)
+        if (transform.position.y > 34.54f)
         {
             transform.position = startPos;
         }

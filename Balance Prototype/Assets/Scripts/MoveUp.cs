@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class MoveUp : MonoBehaviour
 {
-    public GameManager gameManager;
+     private GameManager gameManager;
+
     [SerializeField] private int speed = 10;
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
     void Move()
     {
@@ -18,17 +19,9 @@ public class MoveUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (this.gameObject.name == "Background")
-        {
-            if (gameManager.isGameActive)
-            {
-                Move();
-            }
-        }
-        else
+        if (gameManager.isGameActive)
         {
             Move();
         }
-       
     }
 }

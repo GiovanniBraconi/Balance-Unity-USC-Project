@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private float speed = 20.0f;
     private float xRangePos = 11;
     private float xRangeNeg = -7;
+    private float yRange = 13.9f;
     private GameManager gameManager;
     private bool hasPowerup;
     private GameObject[] GOs;
@@ -89,10 +90,16 @@ public class PlayerMovement : MonoBehaviour
                 transform.position = new Vector3(xRangePos, transform.position.y, transform.position.z);
             }
 
+            gameObject.GetComponent<Rigidbody>().useGravity = true;
+
             // Player movement left to right
             horizontalInput = Input.GetAxis("Horizontal");
             transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
 
+        }
+        if (transform.position.y < yRange)
+        {
+            transform.position = new Vector3(transform.position.x, yRange, transform.position.z);
         }
     }
     }

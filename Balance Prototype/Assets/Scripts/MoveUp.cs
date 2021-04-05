@@ -6,7 +6,7 @@ public class MoveUp : MonoBehaviour
 {
      private GameManager gameManager;
 
-    [SerializeField] private int speed = 10;
+    [SerializeField] private float speed = 10;
     // Start is called before the first frame update
     void Start()
     {

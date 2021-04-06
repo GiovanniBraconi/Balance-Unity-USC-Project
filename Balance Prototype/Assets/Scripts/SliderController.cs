@@ -5,13 +5,17 @@ using UnityEngine.UI;
 
 public class SliderController : MonoBehaviour
 {
-    public Slider slider;
+    public Slider[] slider;
 
     public float sliderValue;
 
     public void Start()
     {
-        slider.value = PlayerPrefs.GetFloat("save", sliderValue);
+        for(var i=0;i<slider.Length;i++)
+        {
+           slider[i].value = PlayerPrefs.GetFloat("save", sliderValue);
+        }
+        
     }
 
     public void ChangeSlider(float value)

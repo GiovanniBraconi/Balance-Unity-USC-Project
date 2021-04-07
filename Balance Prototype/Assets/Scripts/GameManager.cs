@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public GameObject titleScreen;
     public Button restartButton;
     public GameObject pauseMenu;
+    public GameObject levelMusic;
+    public GameObject finalCutsceneMusic;
     
     
 
@@ -90,6 +92,8 @@ public class GameManager : MonoBehaviour
         }
         
         restartButton.gameObject.SetActive(true);
+        
+
         isGameActive = false;
 
     }
@@ -117,6 +121,8 @@ public class GameManager : MonoBehaviour
             timerText.text = "Time: " + Mathf.Round(timeLeft);
             if (timeLeft < 0)
             {
+                levelMusic.GetComponent<AudioSource>().Stop();
+                finalCutsceneMusic.GetComponent<AudioSource>().Play();
                 GameOver();
             }
         }
@@ -132,6 +138,8 @@ public class GameManager : MonoBehaviour
         { 
           Time.timeScale = 0;
             pauseMenu.gameObject.SetActive(true);
+              
+              
             
         }
     }

@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject levelMusic;
     public GameObject finalCutsceneMusic;
-    
+    public GameObject textPanelGuide;
     
 
     public List<GameObject> targetPrefabs;
@@ -37,6 +37,26 @@ public class GameManager : MonoBehaviour
 
     private float timeLeft;
 
+    private bool beenPressed = false;
+
+
+    //singleton pattern start
+    private static GameManager _instance;
+
+    public static GameManager Instance { get { return _instance; } }
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
+    //singleton pattern end
     // Start the game, remove title screen, reset score, and adjust spawnRate based on difficulty button clicked
     public void StartGame(int difficulty)
     {
@@ -74,7 +94,18 @@ public class GameManager : MonoBehaviour
 
     }
 
-    
+   
+
+    public void AlreadyPressed()
+    {
+        if (!beenPressed)
+        {
+            textPanelGuide.gameObject.SetActive(true);
+        }
+        beenPressed = true;
+    }
+
+
 
 
     // Update score with value from target clicked

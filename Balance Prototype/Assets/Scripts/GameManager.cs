@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public GameObject levelMusic;
     public GameObject finalCutsceneMusic;
     public GameObject textPanelGuide;
+    public GameObject player;
     
 
     public List<GameObject> targetPrefabs;
@@ -44,7 +45,7 @@ public class GameManager : MonoBehaviour
     public void StartGame(int difficulty)
     {
         
-        timeLeft = 30;
+        timeLeft = 2;
         spawnRate /= difficulty;
         isGameActive = true;
         StartCoroutine(SpawnTarget());
@@ -130,6 +131,7 @@ public class GameManager : MonoBehaviour
                 levelMusic.GetComponent<AudioSource>().Stop();
                 finalCutsceneMusic.GetComponent<AudioSource>().Play();
                 GameOver();
+                player.GetComponent<PlayerMovement>().yRange = -2f;
             }
         }
     }

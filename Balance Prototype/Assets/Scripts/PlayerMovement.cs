@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private float speed = 20.0f;
     private float xRangePos = 11;
     private float xRangeNeg = -7;
-    private float yRange = 13.9f;
+    public float yRange = 13.9f;
     private GameManager gameManager;
     private bool hasPowerup;
     private GameObject[] GOs;

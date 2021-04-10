@@ -19,7 +19,7 @@ public class MoveUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.isGameActive)
+        if (gameManager.isGameActive || this.gameObject.tag=="Flames")
         {
             Move();
         }

@@ -228,6 +228,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.48
+--- !u!1 &250111598 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 412854876306356244, guid: 75751d77ce965a84c87190063c9e801c,
+    type: 3}
+  m_PrefabInstance: {fileID: 412854876543246728}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &467125770
 GameObject:
   m_ObjectHideFlags: 0
@@ -1573,6 +1579,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6765079024077896315, guid: 45ef175f032839e408ff46bfc6824f62,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 250111598}
     - target: {fileID: 6765079024077896315, guid: 45ef175f032839e408ff46bfc6824f62,
         type: 3}
       propertyPath: pauseMenu

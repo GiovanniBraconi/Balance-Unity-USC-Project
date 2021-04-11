@@ -132,6 +132,7 @@ public class GameManager : MonoBehaviour
                 finalCutsceneMusic.GetComponent<AudioSource>().Play();
                 GameOver();
                 player.GetComponent<PlayerMovement>().yRange = -2f;
+                player.GetComponent<SphereCollider>().enabled = false;
             }
         }
     }

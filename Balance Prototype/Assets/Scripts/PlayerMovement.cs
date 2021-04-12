@@ -14,19 +14,21 @@ public class PlayerMovement : MonoBehaviour
     private GameObject[] GOs;
     public ParticleSystem waterSplash;
     public ParticleSystem steamEffect;
-    public AudioClip steamSound;
-    public AudioClip waterSplashSound;
+    public AudioSource steamSound;
+    public AudioSource waterSplashSound;
     private SpriteRenderer[] flames;
     private SpriteRenderer waterDrop;
-    private AudioSource waterdropAudio;
+    
    
     
     // Start is called before the first frame update
     void Start()
     {
+        steamSound = GameObject.Find("Fire Sound").GetComponent<AudioSource>();
+        waterSplashSound = GameObject.Find("Water Splash Sound").GetComponent<AudioSource>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         hasPowerup = true;
-        waterdropAudio = gameObject.GetComponent<AudioSource>();
+        
 
     }
 
@@ -37,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
         gameObject.GetComponent<SphereCollider>().enabled = false;
         gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
         steamEffect.Play();
-        waterdropAudio.PlayOneShot(steamSound);
+        steamSound.Play();
 
         
         
@@ -66,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
                         }
 
                     }
-                    waterdropAudio.PlayOneShot(waterSplashSound);
+                    waterSplashSound.Play();
                     waterSplash.Play();
                     
                     hasPowerup = false;

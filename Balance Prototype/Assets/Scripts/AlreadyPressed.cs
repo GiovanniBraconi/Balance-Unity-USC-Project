@@ -10,7 +10,10 @@ public class AlreadyPressed : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        beenPressed = (PlayerPrefs.GetInt("Name") == 0);
+        
+        beenPressed = (PlayerPrefs.GetInt("Name") == 2);
+        Debug.Log(beenPressed);
+        
 
     }
     public void Pressed()
@@ -20,7 +23,7 @@ public class AlreadyPressed : MonoBehaviour
         {
             guideTextPanel.gameObject.SetActive(true);
 
-            PlayerPrefs.SetInt("Name", 1);
+            PlayerPrefs.SetInt("Name", 2);
 
         }
     }

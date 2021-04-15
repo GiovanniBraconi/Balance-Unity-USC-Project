@@ -11,8 +11,8 @@ public class AlreadyPressed : MonoBehaviour
     void Start()
     {
         
-        beenPressed = (PlayerPrefs.GetInt("Name") == 2);
-        Debug.Log(beenPressed);
+        beenPressed = (PlayerPrefs.GetInt("Name") == 3);
+        
         
 
     }
@@ -23,7 +23,7 @@ public class AlreadyPressed : MonoBehaviour
         {
             guideTextPanel.gameObject.SetActive(true);
 
-            PlayerPrefs.SetInt("Name", 2);
+            PlayerPrefs.SetInt("Name", 3);
 
         }
     }

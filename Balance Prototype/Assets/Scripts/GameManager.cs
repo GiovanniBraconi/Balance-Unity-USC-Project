@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public GameObject finalCutsceneMusic;
     public GameObject textPanelGuide;
     public GameObject player;
+    public GameObject timerObj;
     
 
     public List<GameObject> targetPrefabs;
@@ -44,7 +45,7 @@ public class GameManager : MonoBehaviour
     
     public void StartGame(int difficulty)
     {
-        
+        timerObj.SetActive(true);
         timeLeft = 2;
         spawnRate /= difficulty;
         isGameActive = true;

@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     public void StartGame(int difficulty)
     {
         timerObj.SetActive(true);
-        timeLeft = 2;
+        timeLeft = 30;
         spawnRate /= difficulty;
         isGameActive = true;
         StartCoroutine(SpawnTarget());
@@ -134,6 +134,9 @@ public class GameManager : MonoBehaviour
                 GameOver();
                 player.GetComponent<PlayerMovement>().yRange = -2f;
                 player.GetComponent<SphereCollider>().enabled = false;
+                player.GetComponent<Rigidbody>().velocity = new Vector3(0, -17, 0);
+               
+
             }
         }
     }

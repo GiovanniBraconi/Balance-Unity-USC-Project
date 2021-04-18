@@ -81,6 +81,8 @@ public class PlayerMovement : MonoBehaviour
 
             }
 
+
+
             // Check for left and right bounds
             if (transform.position.x < xRangeNeg)
             {
@@ -91,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 transform.position = new Vector3(xRangePos, transform.position.y, transform.position.z);
             }
-
+            
             gameObject.GetComponent<Rigidbody>().useGravity = true;
 
             // Player movement left to right

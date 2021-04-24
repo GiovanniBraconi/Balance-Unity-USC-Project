@@ -19,7 +19,9 @@ public class GameManager : MonoBehaviour
     public GameObject textPanelGuide;
     public GameObject player;
     public GameObject timerObj;
-    
+    private GameObject[] GOs;
+    private SpriteRenderer[] flames;
+
 
     public List<GameObject> targetPrefabs;
 
@@ -129,7 +131,20 @@ public class GameManager : MonoBehaviour
             timerText.text = "Time: " + Mathf.Round(timeLeft);
             if (timeLeft < 0)
             {
-                levelMusic.GetComponent<AudioSource>().Stop();
+                GameObject[] GOs = GameObject.FindGameObjectsWithTag("Flames");
+                for (var i = 0; i < GOs.Length; i++)
+                {
+                    // to access component - GOs[i].GetComponent.<BoxCollider>()
+                    // but I do it everything in 1 line.
+                    GOs[i].gameObject.GetComponentInChildren<ParticleSystem>().Play();
+                    GOs[i].gameObject.GetComponent<BoxCollider>().enabled = false;
+                    flames = GOs[i].gameObject.GetComponentsInChildren<SpriteRenderer>();
+                    foreach (var sr in flames)
+                    {
+                        sr.enabled = false;
+                    }
+                }
+                    levelMusic.GetComponent<AudioSource>().Stop();
                 finalCutsceneMusic.GetComponent<AudioSource>().Play();
                 GameOver();
                 player.GetComponent<PlayerMovement>().yRange = -2f;

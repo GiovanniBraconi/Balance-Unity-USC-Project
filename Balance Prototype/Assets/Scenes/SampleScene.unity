@@ -712,6 +712,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!198 &815872502 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5386361180095681920, guid: 75751d77ce965a84c87190063c9e801c,
+    type: 3}
+  m_PrefabInstance: {fileID: 412854876543246728}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,6 +801,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!198 &1018331086 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5380700582356953293, guid: 75751d77ce965a84c87190063c9e801c,
+    type: 3}
+  m_PrefabInstance: {fileID: 412854876543246728}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1197791118
 GameObject:
   m_ObjectHideFlags: 0
@@ -1833,9 +1845,19 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 8e6ffb8b9da2251439c7ec62f1f10aa0, type: 3}
     - target: {fileID: 412854876306356265, guid: 75751d77ce965a84c87190063c9e801c,
         type: 3}
+      propertyPath: steamParticle
+      value: 
+      objectReference: {fileID: 815872502}
+    - target: {fileID: 412854876306356265, guid: 75751d77ce965a84c87190063c9e801c,
+        type: 3}
       propertyPath: waterSplashSound
       value: 
       objectReference: {fileID: 8300000, guid: 18d8726a1ede2e5479f58b72de191844, type: 3}
+    - target: {fileID: 412854876306356265, guid: 75751d77ce965a84c87190063c9e801c,
+        type: 3}
+      propertyPath: waterSplashParticle
+      value: 
+      objectReference: {fileID: 1018331086}
     - target: {fileID: 412854876306356266, guid: 75751d77ce965a84c87190063c9e801c,
         type: 3}
       propertyPath: m_Mass

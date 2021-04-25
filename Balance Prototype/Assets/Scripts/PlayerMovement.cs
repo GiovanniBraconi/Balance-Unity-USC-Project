@@ -11,17 +11,17 @@ public class PlayerMovement : MonoBehaviour
     public float yRange = 13.9f;
     private GameManager gameManager;
     private bool hasPowerup;
-    private GameObject[] GOs;
-    public ParticleSystem waterSplash;
-    public ParticleSystem steamEffect;
-    public AudioSource steamSound;
-    public AudioSource waterSplashSound;
-    private SpriteRenderer[] flames;
-    private SpriteRenderer waterDrop;
+    private GameObject[] flames;
+    public ParticleSystem waterSplashParticle;
+    public ParticleSystem steamParticle;
+    private AudioSource steamSound;
+    private AudioSource waterSplashSound;
+    private SpriteRenderer[] flamesSprites;
+    private SpriteRenderer waterDropSprite;
     
    
     
-    // Start is called before the first frame update
+    
     void Start()
     {
         steamSound = GameObject.Find("Fire Sound").GetComponent<AudioSource>();
@@ -38,14 +38,14 @@ public class PlayerMovement : MonoBehaviour
         gameManager.GameOver();
         gameObject.GetComponent<SphereCollider>().enabled = false;
         gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
-        steamEffect.Play();
+        steamParticle.Play();
         steamSound.Play();
 
         
         
        
     }
-    // Update is called once per frame
+    
     void Update()
     {
         if (gameManager.isGameActive)
@@ -54,22 +54,22 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (hasPowerup)
                 {
-                    GameObject[] GOs = GameObject.FindGameObjectsWithTag("Flames");
-                    for (var i = 0; i < GOs.Length; i++)
+                    GameObject[] flames = GameObject.FindGameObjectsWithTag("Flames");
+                    for (var i = 0; i < flames.Length; i++)
                     {
                         // to access component - GOs[i].GetComponent.<BoxCollider>()
                         // but I do it everything in 1 line.
-                        GOs[i].gameObject.GetComponentInChildren<ParticleSystem>().Play();
-                        GOs[i].gameObject.GetComponent<BoxCollider>().enabled = false;
-                        flames = GOs[i].gameObject.GetComponentsInChildren<SpriteRenderer>();
-                        foreach (var sr in flames)
+                        flames[i].gameObject.GetComponentInChildren<ParticleSystem>().Play();
+                        flames[i].gameObject.GetComponent<BoxCollider>().enabled = false;
+                        flamesSprites = flames[i].gameObject.GetComponentsInChildren<SpriteRenderer>();
+                        foreach (var sr in flamesSprites)
                         {
                             sr.enabled = false;
                         }
 
                     }
                     waterSplashSound.Play();
-                    waterSplash.Play();
+                    waterSplashParticle.Play();
                     
                     hasPowerup = false;
                     

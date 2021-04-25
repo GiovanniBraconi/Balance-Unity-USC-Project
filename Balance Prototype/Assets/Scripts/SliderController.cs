@@ -5,15 +5,15 @@ using UnityEngine.UI;
 
 public class SliderController : MonoBehaviour
 {
-    public Slider[] slider;
+    public Slider[] sliders;
 
     public float sliderValue;
 
     public void Start()
     {
-        for(var i=0;i<slider.Length;i++)
+        for(var i=0;i<sliders.Length;i++)
         {
-           slider[i].value = PlayerPrefs.GetFloat("save", sliderValue);
+           sliders[i].value = PlayerPrefs.GetFloat("save", sliderValue);
         }
         
     }

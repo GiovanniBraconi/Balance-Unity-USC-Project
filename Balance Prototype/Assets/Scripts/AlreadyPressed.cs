@@ -10,10 +10,10 @@ public class AlreadyPressed : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
         beenPressed = (PlayerPrefs.GetInt("Name") == 3);
-        
-        
+
+
 
     }
     public void Pressed()
@@ -29,9 +29,5 @@ public class AlreadyPressed : MonoBehaviour
     }
 
 
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
 }

@@ -7,10 +7,10 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-   
+
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI gameOverText;
-    [SerializeField]private TextMeshProUGUI youWonText;
+    [SerializeField] private TextMeshProUGUI youWonText;
     public GameObject titleScreen;
     public Button restartButton;
     public GameObject pauseMenu;
@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
 
     public List<GameObject> targetPrefabs;
 
-    private int score;
+
     private float spawnRate = 1.5f;
     public bool isGameActive;
 
@@ -35,25 +35,25 @@ public class GameManager : MonoBehaviour
 
     private float spawnRangeZ = -0.07f;
 
-    
+
 
 
 
     private float timeLeft;
 
-    
 
 
-    
+
+
     public void StartGame(int difficulty)
     {
         timerObj.SetActive(true);
-        timeLeft = 30;
+        timeLeft = 3;
         spawnRate /= difficulty;
         isGameActive = true;
         StartCoroutine(SpawnTarget());
-        
-        
+
+
         titleScreen.SetActive(false);
     }
 
@@ -76,19 +76,19 @@ public class GameManager : MonoBehaviour
     // Generate a random spawn position based on a random index from 0 to 3
     Vector3 RandomSpawnPosition()
     {
-        Vector3 spawnPosition = new Vector3(Random.Range(-spawnRangeX,spawnRangeX), spawnRangeY, spawnRangeZ);
+        Vector3 spawnPosition = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), spawnRangeY, spawnRangeZ);
         return spawnPosition;
 
     }
 
-   
-
-   
 
 
 
-    // Update score with value from target clicked
-    
+
+
+
+
+
 
     // Stop game, bring up game over text and restart button
     public void GameOver()
@@ -97,12 +97,13 @@ public class GameManager : MonoBehaviour
         {
             youWonText.gameObject.SetActive(true);
         }
-        else {
-            gameOverText.gameObject.SetActive(true); 
+        else
+        {
+            gameOverText.gameObject.SetActive(true);
         }
-        
+
         restartButton.gameObject.SetActive(true);
-        
+
 
         isGameActive = false;
 
@@ -114,7 +115,12 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-
+    void Fall()
+    {
+        player.GetComponent<PlayerMovement>().yRange = -2f;
+        player.GetComponent<SphereCollider>().enabled = false;
+        player.GetComponent<Rigidbody>().velocity = new Vector3(0, -17, 0);
+    }
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -122,6 +128,22 @@ public class GameManager : MonoBehaviour
             PauseGame();
         }
         CountDownTimer();
+    }
+    void DestroyFlames()
+    {
+        GOs = GameObject.FindGameObjectsWithTag("Flames");
+        for (var i = 0; i < GOs.Length; i++)
+        {
+            // to access component - GOs[i].GetComponent.<BoxCollider>()
+            // but I do it everything in 1 line.
+            GOs[i].gameObject.GetComponentInChildren<ParticleSystem>().Play();
+            GOs[i].gameObject.GetComponent<BoxCollider>().enabled = false;
+            flames = GOs[i].gameObject.GetComponentsInChildren<SpriteRenderer>();
+            foreach (var sr in flames)
+            {
+                sr.enabled = false;
+            }
+        }
     }
     public void CountDownTimer()
     {
@@ -131,30 +153,16 @@ public class GameManager : MonoBehaviour
             timerText.text = "Time: " + Mathf.Round(timeLeft);
             if (timeLeft < 0)
             {
-                GameObject[] GOs = GameObject.FindGameObjectsWithTag("Flames");
-                for (var i = 0; i < GOs.Length; i++)
-                {
-                    // to access component - GOs[i].GetComponent.<BoxCollider>()
-                    // but I do it everything in 1 line.
-                    GOs[i].gameObject.GetComponentInChildren<ParticleSystem>().Play();
-                    GOs[i].gameObject.GetComponent<BoxCollider>().enabled = false;
-                    flames = GOs[i].gameObject.GetComponentsInChildren<SpriteRenderer>();
-                    foreach (var sr in flames)
-                    {
-                        sr.enabled = false;
-                    }
-                }
-                    levelMusic.GetComponent<AudioSource>().Stop();
+                DestroyFlames();
+                levelMusic.GetComponent<AudioSource>().Stop();
                 finalCutsceneMusic.GetComponent<AudioSource>().Play();
                 GameOver();
-                player.GetComponent<PlayerMovement>().yRange = -2f;
-                player.GetComponent<SphereCollider>().enabled = false;
-                player.GetComponent<Rigidbody>().velocity = new Vector3(0, -17, 0);
-               
-
+                Fall();
             }
         }
     }
+
+
 
     public void Exit()
     {
@@ -163,23 +171,23 @@ public class GameManager : MonoBehaviour
     void PauseGame()
     {
         if (isGameActive)
-        { 
-          Time.timeScale = 0;
+        {
+            Time.timeScale = 0;
             pauseMenu.gameObject.SetActive(true);
-              
-              
-            
         }
     }
+
+
+
 
     public void ResumeGame()
     {
         if (isGameActive)
         {
-          Time.timeScale = 1;
+            Time.timeScale = 1;
             pauseMenu.gameObject.SetActive(false);
         }
-       
+
     }
     private void OnApplicationQuit()
     {

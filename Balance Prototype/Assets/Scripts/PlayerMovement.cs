@@ -10,14 +10,15 @@ public class PlayerMovement : MonoBehaviour
     private float xRangeNeg = -7;
     public float yRange = 13.9f;
     private GameManager gameManager;
-    private bool hasPowerup;
     private GameObject[] flames;
+    private bool hasPowerup;
     public ParticleSystem waterSplashParticle;
     public ParticleSystem steamParticle;
     private AudioSource steamSound;
     private AudioSource waterSplashSound;
     private SpriteRenderer[] flamesSprites;
-    private SpriteRenderer waterDropSprite;
+    
+    
     
    
     
@@ -30,6 +31,13 @@ public class PlayerMovement : MonoBehaviour
         hasPowerup = true;
         
 
+    }
+
+    void Movement()
+    {
+
+        horizontalInput = Input.GetAxis("Horizontal");
+        transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -45,7 +53,42 @@ public class PlayerMovement : MonoBehaviour
         
        
     }
-    
+    void BoundCheck()
+    {
+        if (transform.position.x < xRangeNeg)
+        {
+            transform.position = new Vector3(xRangeNeg, transform.position.y, transform.position.z);
+        }
+
+        if (transform.position.x > xRangePos)
+        {
+            transform.position = new Vector3(xRangePos, transform.position.y, transform.position.z);
+        }
+    }
+    void AntiFall()
+    {
+        if (transform.position.y < yRange)
+        {
+            transform.position = new Vector3(transform.position.x, yRange, transform.position.z);
+        }
+    }
+    void DestroyFlames()
+    {
+         flames = GameObject.FindGameObjectsWithTag("Flames");
+        for (var i = 0; i < flames.Length; i++)
+        {
+            // to access component - GOs[i].GetComponent.<BoxCollider>()
+            // but I do it everything in 1 line.
+            flames[i].gameObject.GetComponentInChildren<ParticleSystem>().Play();
+            flames[i].gameObject.GetComponent<BoxCollider>().enabled = false;
+            flamesSprites = flames[i].gameObject.GetComponentsInChildren<SpriteRenderer>();
+            foreach (var sr in flamesSprites)
+            {
+                sr.enabled = false;
+            }
+
+        }
+    }
     void Update()
     {
         if (gameManager.isGameActive)
@@ -54,58 +97,31 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (hasPowerup)
                 {
-                    GameObject[] flames = GameObject.FindGameObjectsWithTag("Flames");
-                    for (var i = 0; i < flames.Length; i++)
-                    {
-                        // to access component - GOs[i].GetComponent.<BoxCollider>()
-                        // but I do it everything in 1 line.
-                        flames[i].gameObject.GetComponentInChildren<ParticleSystem>().Play();
-                        flames[i].gameObject.GetComponent<BoxCollider>().enabled = false;
-                        flamesSprites = flames[i].gameObject.GetComponentsInChildren<SpriteRenderer>();
-                        foreach (var sr in flamesSprites)
-                        {
-                            sr.enabled = false;
-                        }
-
-                    }
+                    DestroyFlames();
                     waterSplashSound.Play();
                     waterSplashParticle.Play();
                     
                     hasPowerup = false;
                     
-                    // now all your game objects are in GOs,
-                    // all that remains is to getComponent of each and every script and you are good to go.
-                    // to disable a components
+                    
                     
                 }
 
             }
-
-
-
-            // Check for left and right bounds
-            if (transform.position.x < xRangeNeg)
-            {
-                transform.position = new Vector3(xRangeNeg, transform.position.y, transform.position.z);
-            }
-
-            if (transform.position.x > xRangePos)
-            {
-                transform.position = new Vector3(xRangePos, transform.position.y, transform.position.z);
-            }
+            BoundCheck();
             
             gameObject.GetComponent<Rigidbody>().useGravity = true;
 
-            // Player movement left to right
-            horizontalInput = Input.GetAxis("Horizontal");
-            transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
+            Movement();
+            
 
         }
-        if (transform.position.y < yRange)
-        {
-            transform.position = new Vector3(transform.position.x, yRange, transform.position.z);
-        }
+        AntiFall();
     }
     }
+
+
+
+            
 
 

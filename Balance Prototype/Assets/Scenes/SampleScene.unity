@@ -234,6 +234,33 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 412854876543246728}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &250111599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250111598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3420e5ee48bc0c042b38c75546d158cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waterSplashParticle: {fileID: 1018331086}
+--- !u!114 &250111606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250111598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e31e362bc8c7ca4ea0d6c0327e0a3df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yRange: 13.9
+  steamParticle: {fileID: 815872502}
 --- !u!1 &467125770
 GameObject:
   m_ObjectHideFlags: 0

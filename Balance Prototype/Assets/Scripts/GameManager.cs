@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour
 
     void Fall()
     {
-        player.GetComponent<PlayerMovement>().yRange = -2f;
+        player.GetComponent<PlayerController>().yRange = -2f;
         player.GetComponent<SphereCollider>().enabled = false;
         player.GetComponent<Rigidbody>().velocity = new Vector3(0, -17, 0);
     }

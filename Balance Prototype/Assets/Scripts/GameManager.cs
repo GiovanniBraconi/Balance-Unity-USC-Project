@@ -18,9 +18,9 @@ public class GameManager : MonoBehaviour
     public GameObject finalCutsceneMusic;
     public GameObject textPanelGuide;
     public GameObject player;
-    public GameObject timerObj;
-    private GameObject[] GOs;
-    private SpriteRenderer[] flames;
+    public GameObject timer;
+    private GameObject[] flames;
+    private SpriteRenderer[] flamesSprites;
 
 
     public List<GameObject> targetPrefabs;
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame(int difficulty)
     {
-        timerObj.SetActive(true);
+        timer.SetActive(true);
         timeLeft = 3;
         spawnRate /= difficulty;
         isGameActive = true;
@@ -131,17 +131,17 @@ public class GameManager : MonoBehaviour
     }
     void DestroyFlames()
     {
-        GOs = GameObject.FindGameObjectsWithTag("Flames");
-        for (var i = 0; i < GOs.Length; i++)
+        flames = GameObject.FindGameObjectsWithTag("Flames");
+        for (var i = 0; i < flames.Length; i++)
         {
             // to access component - GOs[i].GetComponent.<BoxCollider>()
             // but I do it everything in 1 line.
-            GOs[i].gameObject.GetComponentInChildren<ParticleSystem>().Play();
-            GOs[i].gameObject.GetComponent<BoxCollider>().enabled = false;
-            flames = GOs[i].gameObject.GetComponentsInChildren<SpriteRenderer>();
-            foreach (var sr in flames)
+            flames[i].gameObject.GetComponentInChildren<ParticleSystem>().Play();
+            flames[i].gameObject.GetComponent<BoxCollider>().enabled = false;
+            flamesSprites = flames[i].gameObject.GetComponentsInChildren<SpriteRenderer>();
+            foreach (var flame in flamesSprites)
             {
-                sr.enabled = false;
+                flame.enabled = false;
             }
         }
     }

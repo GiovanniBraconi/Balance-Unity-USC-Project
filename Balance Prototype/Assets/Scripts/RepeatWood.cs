@@ -5,7 +5,7 @@ using UnityEngine;
 public class RepeatWood : MonoBehaviour
 {
     public Vector3 startPos;
-    private float repeatWidth;
+    private float topBound = 34.54f;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +18,7 @@ public class RepeatWood : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.y > 34.54f)
+        if (transform.position.y > topBound)
         {
             transform.position = startPos;
         }

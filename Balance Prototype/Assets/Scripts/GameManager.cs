@@ -5,9 +5,10 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class GameManager : MonoBehaviour
 {
-
+    
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI gameOverText;
     [SerializeField] private TextMeshProUGUI youWonText;
@@ -27,11 +28,18 @@ public class GameManager : MonoBehaviour
 
 
     private float spawnRate = 1.5f;
+   
     public bool isGameActive;
 
     private float spawnRangeY = -11;
 
-    private float spawnRangeX = 7.36f;
+    private float spawnRangeX = 8f;
+
+    private float midIntervalRangeX = 6.52f;
+
+    private float midSpawnPositionX;
+
+    private float spawnPositionX;
 
     private float spawnRangeZ = -0.07f;
 
@@ -48,7 +56,7 @@ public class GameManager : MonoBehaviour
     public void StartGame(int difficulty)
     {
         timer.SetActive(true);
-        timeLeft = 3;
+        timeLeft = 30;
         spawnRate /= difficulty;
         isGameActive = true;
         StartCoroutine(SpawnTarget());
@@ -76,7 +84,16 @@ public class GameManager : MonoBehaviour
     // Generate a random spawn position based on a random index from 0 to 3
     Vector3 RandomSpawnPosition()
     {
-        Vector3 spawnPosition = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), spawnRangeY, spawnRangeZ);
+         float[] xIntervals=new float[5];
+    midSpawnPositionX = Random.Range(-midIntervalRangeX,midIntervalRangeX);
+        xIntervals[0] = -spawnRangeX;
+        xIntervals[1] = midSpawnPositionX;
+        xIntervals[2] = midSpawnPositionX;
+        xIntervals[3] = midSpawnPositionX;
+        xIntervals[4] =  spawnRangeX;
+
+        spawnPositionX = xIntervals[Random.Range(0, xIntervals.Length)];
+        Vector3 spawnPosition = new Vector3(spawnPositionX, spawnRangeY, spawnRangeZ);
         return spawnPosition;
 
     }

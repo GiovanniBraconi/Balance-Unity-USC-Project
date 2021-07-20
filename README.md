@@ -2,11 +2,13 @@
 Game created for the Unity USC Course
 
 
+
 DESCRIPTION
 
 
 
 Balance is an arcade game where the player needs to dodge all the flames coming from the bottom of the screen until the time finishes.The A/D keys are used to move the water drop left and right and the E key can be pressed once to make all the flames on the screen disappear.
+
 
 
 ​
@@ -26,6 +28,7 @@ I solo-developed this game from concept to completion in Unity , implementing th
 ● 3 Sound Effects (water splash, player death and UI buttons)
 
 ● 2 Particles Emitters(water splash, player death)
+
 
 
  

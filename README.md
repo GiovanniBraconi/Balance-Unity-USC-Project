@@ -42,4 +42,6 @@ TOOLS
 
 ​
 
-PLAY THE GAME
+PLAY THE GAME HERE:
+
+https://giovanni-braconi.itch.io/balance

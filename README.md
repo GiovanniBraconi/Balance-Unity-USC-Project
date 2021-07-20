@@ -16,7 +16,6 @@ WHAT I DID
 I solo-developed this game from concept to completion in Unity , implementing the functionality writing C# scripts with visual studio. These are all the assets that i created:
 
 ​
-
 ● Pixel Environment(trunk and background forest)
 
 ● 2 Animated 2D Sprites (flames and water drop)
